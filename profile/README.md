@@ -1,6 +1,4 @@
-<p align="center">
-  <img alt="NEXUS // Range — оркестрация изолированных киберполигонов на базе KVM" src="https://raw.githubusercontent.com/NEXUS-RANGE/.github/main/profile/assets/banner.svg" width="100%">
-</p>
+<img alt="NEXUS // Range — оркестрация изолированных киберполигонов на базе KVM" src="https://raw.githubusercontent.com/NEXUS-RANGE/.github/main/profile/assets/banner.svg" width="100%">
 
 <p align="center">
   <a href="https://nexussec.ru"><img alt="Сайт" src="https://img.shields.io/badge/%D1%81%D0%B0%D0%B9%D1%82-nexussec.ru-2B2B2B?style=for-the-badge&labelColor=0A0A0A"></a>
@@ -8,106 +6,117 @@
   <a href="https://github.com/orgs/NEXUS-RANGE/projects/1"><img alt="Доска задач" src="https://img.shields.io/badge/%D0%B4%D0%BE%D1%81%D0%BA%D0%B0-%D0%B7%D0%B0%D0%B4%D0%B0%D1%87-2B2B2B?style=for-the-badge&logo=github&logoColor=white&labelColor=0A0A0A"></a>
 </p>
 
-<br>
-
-**NEXUS** — отечественная платформа киберполигонов. Она разворачивает изолированные учебные стенды по информационной безопасности на обычном сервере вуза или в облаке: преподаватель описывает стенд в одном файле, а студенты работают с ним прямо из браузера.
-
-<br>
-
-## ▍Что умеет платформа
-
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <b>Стенды как код</b><br>
-      <sub>Сети и виртуальные машины описываются декларативным манифестом. Движок сам приводит инфраструктуру к нужному состоянию.</sub>
-    </td>
-    <td width="50%" valign="top">
-      <b>Быстрый запуск</b><br>
-      <sub>Машины создаются из эталонных образов по технологии Copy-on-Write: стенд поднимается за минуты и почти не занимает диск.</sub>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <b>Доступ из браузера</b><br>
-      <sub>Консоль виртуальной машины открывается во вкладке. Студентам ничего не нужно устанавливать.</sub>
-    </td>
-    <td width="50%" valign="top">
-      <b>Роли и аудит</b><br>
-      <sub>Три роли — наблюдатель, оператор, администратор. Каждое действие записывается в журнал аудита.</sub>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <b>Видимость атак</b><br>
-      <sub>Запись трафика стендов и алерты Suricata в реальном времени — преподаватель видит, что происходит в сети.</sub>
-    </td>
-    <td width="50%" valign="top">
-      <b>Поиск уязвимостей</b><br>
-      <sub>ПО внутри виртуальных машин сверяется с базой уязвимостей — для сценариев атаки и защиты.</sub>
-    </td>
-  </tr>
-</table>
-
-<br>
-
-## ▍Архитектура
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/NEXUS-RANGE/.github/main/profile/assets/architecture-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/NEXUS-RANGE/.github/main/profile/assets/architecture-light.svg">
-  <img alt="Архитектура NEXUS: управление, узел киберполигона, наблюдение и анализ" src="https://raw.githubusercontent.com/NEXUS-RANGE/.github/main/profile/assets/architecture-dark.svg" width="100%">
-</picture>
-
-<br>
-
-## ▍Компоненты
-
-| Компонент | Что делает | Стек | Статус |
-|:--|:--|:--|:--|
-| **nexus-web** | Веб-интерфейс платформы | TypeScript | в разработке |
-| **API Gateway** | Единая точка входа: пользователи, роли, журнал аудита | Go · PostgreSQL | в разработке |
-| **Node Agent** | Управляет виртуальными машинами, дисками и сетями на узле | Go · libvirt | в разработке |
-| **PCAP Engine** | Перехватывает сетевой трафик с интерфейсов KVM | Go · gopacket | в разработке |
-| [**suri-streamer**](https://github.com/NEXUS-RANGE/suri-streamer) | Читает алерты Suricata из `eve.json` и передаёт их в веб через SSE | Go | открытый код · MIT |
-| **Master-образы** | Эталонные диски QCOW2 и скрипты зачистки | QCOW2 · Linux | в разработке |
-| **CVE Analyzer** | Опрашивает ПО виртуальных машин и сверяет его с базой уязвимостей | Go · qemu-guest-agent · PostgreSQL | в разработке |
-
-<br>
-
-## ▍Стек
-
-<p>
-  <img alt="Go" src="https://img.shields.io/badge/Go-1F1F1F?style=flat-square&logo=go&logoColor=white">
-  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-1F1F1F?style=flat-square&logo=typescript&logoColor=white">
-  <img alt="PostgreSQL" src="https://img.shields.io/badge/PostgreSQL-1F1F1F?style=flat-square&logo=postgresql&logoColor=white">
-  <img alt="KVM / QEMU" src="https://img.shields.io/badge/KVM%20%2F%20QEMU-1F1F1F?style=flat-square&logo=qemu&logoColor=white">
-  <img alt="libvirt" src="https://img.shields.io/badge/libvirt-1F1F1F?style=flat-square">
-  <img alt="Suricata" src="https://img.shields.io/badge/Suricata-1F1F1F?style=flat-square">
-  <img alt="Docker" src="https://img.shields.io/badge/Docker-1F1F1F?style=flat-square&logo=docker&logoColor=white">
-  <img alt="Linux" src="https://img.shields.io/badge/Linux-1F1F1F?style=flat-square&logo=linux&logoColor=white">
+<p align="center">
+  <img alt="Go 1.22" src="https://img.shields.io/badge/Go-1.22-30363d?style=flat-square&logo=go&logoColor=white&labelColor=0d1117">
+  <img alt="KVM / libvirt" src="https://img.shields.io/badge/KVM-libvirt-30363d?style=flat-square&logo=qemu&logoColor=white&labelColor=0d1117">
+  <img alt="PostgreSQL" src="https://img.shields.io/badge/PostgreSQL-14%2B-30363d?style=flat-square&logo=postgresql&logoColor=white&labelColor=0d1117">
+  <img alt="Linux" src="https://img.shields.io/badge/Linux-host-30363d?style=flat-square&logo=linux&logoColor=white&labelColor=0d1117">
+  <img alt="MITRE ATT&CK" src="https://img.shields.io/badge/MITRE%20ATT%26CK-%D1%80%D0%B0%D0%B7%D0%BC%D0%B5%D1%82%D0%BA%D0%B0-30363d?style=flat-square&labelColor=0d1117">
+  <img alt="Suricata — в разработке" src="https://img.shields.io/badge/Suricata-%D0%B2%20%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B5-30363d?style=flat-square&labelColor=0d1117">
 </p>
 
-<br>
-
-## ▍Сейчас в работе · сентябрь — октябрь 2026
-
-- **PCAP Engine** — демон перехвата трафика с интерфейсов KVM
-- **Suricata Streamer** — потоковая передача алертов IDS в веб-интерфейс
-- **Master-образы** — чистые диски QCOW2 (Kali, Debian, Alpine) и скрипты зачистки
-- **CVE Analyzer** — анализ уязвимостей ПО виртуальных машин, архитектура и шлюз
-
-Статус задач — на [доске проекта](https://github.com/orgs/NEXUS-RANGE/projects/1).
+<p align="center"><b>Настоящие виртуальные машины, изолированная сеть и стенд на всю группу.<br>Из браузера, одним кликом.</b></p>
 
 <br>
 
-## ▍Как мы работаем
+<img alt="Конструктор стенда: машины из образов сервера, связи, консоль студента и принятый флаг" src="https://raw.githubusercontent.com/NEXUS-RANGE/.github/main/profile/assets/hero.png" width="100%">
 
-- Бэкенд пишем на Go, интерфейс — на TypeScript.
-- Каждая задача живёт на доске проекта и в отдельной ветке.
-- Изменения попадают в основную ветку только через pull request и code review.
+## Зачем
 
-<br>
+Контейнер делит ядро с хостом, и уязвимость ядра выводит из него прямо на сервер. Windows в нём не запустить. Классическая ВМ честная, но стенд на группу означает часы установки или тридцать полных копий образа на диске.
+
+NEXUS берёт лучшее от обоих: у каждой машины своё ядро на KVM, а клон создаётся мгновенно и почти не занимает места.
+
+|                   | Контейнеры                 | Классические ВМ                 | NEXUS                              |
+| ----------------- | -------------------------- | ------------------------------- | ---------------------------------- |
+| Ядро              | общее с хостом             | своё                            | своё, KVM                          |
+| Гостевые ОС       | только Linux-процессы      | любые                           | любые, из образов вашего сервера   |
+| Стенд на 30 человек | быстро, но это не машины | часы или 30 полных копий        | 30 тонких клонов одного образа     |
+| Сеть              | общий мост Docker          | настраивается руками            | своя сеть у каждого стенда, без маршрута наружу |
+
+## Что внутри
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+<img src="https://raw.githubusercontent.com/NEXUS-RANGE/.github/main/profile/assets/icons/layers.svg" width="22" alt=""><br>
+**Copy-on-write в два уровня**
+
+- Образ сервера → шаблон лабы → клон студента. Каждый уровень — тонкая дельта qcow2.
+- Тридцать машин из одного образа — тридцать почти пустых файлов.
+- Шаблон, на котором стоят клоны, удалить нельзя: система не даст сломать диски студентов.
+
+</td>
+<td width="50%" valign="top">
+
+<img src="https://raw.githubusercontent.com/NEXUS-RANGE/.github/main/profile/assets/icons/terminal.svg" width="22" alt=""><br>
+**Консоль без клиента**
+
+- noVNC в браузере по WebSocket. Ни VNC-клиента, ни VPN.
+- Одноразовые тикеты на подключение. Порты VNC наружу не открываются.
+- Студент видит только свои машины. Чужая — 404.
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+<img src="https://raw.githubusercontent.com/NEXUS-RANGE/.github/main/profile/assets/icons/shield.svg" width="22" alt=""><br>
+**Изоляция стенда**
+
+- У сети стенда нет маршрута наружу. nwfilter отрезает гостю все адреса хоста.
+- ARP-спуфинг и подмена адресов внутри стенда разрешены: это часть упражнения.
+- Квоты на машины, vCPU и память у каждой группы.
+
+</td>
+<td width="50%" valign="top">
+
+<img src="https://raw.githubusercontent.com/NEXUS-RANGE/.github/main/profile/assets/icons/package.svg" width="22" alt=""><br>
+**Свой образ за минуты**
+
+- Преподаватель включает машину и настраивает её руками в консоли.
+- Одна кнопка — очистка virt-sysprep и новый шаблон лабы.
+- Сессия настройки живёт 2 часа в отдельной сети с защитой от подмены MAC.
+
+</td>
+</tr>
+</table>
+
+Сценарии размечены по тактикам и техникам MITRE ATT&CK. Флаги проверяются автоматически, баллы и ведомость группы обновляются сами.
+
+**В разработке.** Захват трафика стенда прямо в браузере с разбором протоколов, включая Modbus/TCP: API и интерфейс готовы, сервер захвата — следующий. Алерты Suricata в интерфейсе в реальном времени: стример [suri-streamer](https://github.com/NEXUS-RANGE/suri-streamer) уже открыт под MIT. Привязка к ATT&CK — за ним.
+
+## Архитектура
+
+```mermaid
+%%{init: {'theme': 'neutral'}}%%
+flowchart LR
+  U(["Браузер"]) -- "HTTPS · WSS" --> S["Studio<br/>интерфейс, консоль"]
+  S --> A["Academy<br/>группы, лабы, флаги"]
+  A --> G["API Gateway<br/>квоты, тикеты, учёт"]
+  S -. "консоль" .-> G
+  G --> N["Node Agent<br/>на каждом узле"]
+  N --> K[("KVM · libvirt")]
+```
+
+Бэкенд — Go, интерфейс — TypeScript и React. Состояние — в PostgreSQL: учебное у Academy, ресурсы у Gateway.
+
+## Быстрый старт
+
+Из корня репозитория платформы, на Linux-хосте с аппаратной виртуализацией:
+
+```bash
+./prepare-kvm.sh               # libvirt, QEMU, проверка /dev/kvm, базовый образ
+./bootstrap.sh                 # PostgreSQL, сборка сервисов, запуск стека
+xdg-open http://127.0.0.1:3000
+```
+
+Вход преподавателя — `teacher / teacher`, свой пароль задаётся так: `TEACHER_PASS=… ./bootstrap.sh`. Студенты входят по коду приглашения из кабинета преподавателя.
+
+Без `/dev/kvm` стек поднимется на симуляторе гипервизора: учебная часть работает целиком, машины не создаются. Если порт 3000 занят — `FRONTEND_PORT=3005 ./bootstrap.sh`. Подробности — в `docs/INSTALL.md`.
+
+---
 
 <p align="center">
   <sub>
@@ -116,5 +125,5 @@
     <a href="https://github.com/orgs/NEXUS-RANGE/projects/1">Доска задач</a>
   </sub>
   <br>
-  <sub>NEXUS · Россия · 2026</sub>
+  <sub>NEXUS // Range — для обучения и отработки защиты. Атаки выполняются только внутри изолированного стенда.</sub>
 </p>
