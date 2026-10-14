@@ -1,9 +1,5 @@
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/NEXUS-RANGE/.github/main/profile/assets/banner-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/NEXUS-RANGE/.github/main/profile/assets/banner-light.svg">
-    <img alt="NEXUS // Range — отечественная платформа киберполигонов" src="https://raw.githubusercontent.com/NEXUS-RANGE/.github/main/profile/assets/banner-dark.svg" width="100%">
-  </picture>
+  <img alt="NEXUS // Range — оркестрация изолированных киберполигонов на базе KVM" src="https://raw.githubusercontent.com/NEXUS-RANGE/.github/main/profile/assets/banner.svg" width="100%">
 </p>
 
 <p align="center">
