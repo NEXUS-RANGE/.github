@@ -87,35 +87,6 @@ NEXUS берёт лучшее от обоих: у каждой машины св
 
 **В разработке.** Захват трафика стенда прямо в браузере с разбором протоколов, включая Modbus/TCP: API и интерфейс готовы, сервер захвата — следующий. Алерты Suricata в интерфейсе в реальном времени: стример [suri-streamer](https://github.com/NEXUS-RANGE/suri-streamer) уже открыт под MIT. Привязка к ATT&CK — за ним.
 
-## Архитектура
-
-```mermaid
-%%{init: {'theme': 'neutral'}}%%
-flowchart LR
-  U(["Браузер"]) -- "HTTPS · WSS" --> S["Studio<br/>интерфейс, консоль"]
-  S --> A["Academy<br/>группы, лабы, флаги"]
-  A --> G["API Gateway<br/>квоты, тикеты, учёт"]
-  S -. "консоль" .-> G
-  G --> N["Node Agent<br/>на каждом узле"]
-  N --> K[("KVM · libvirt")]
-```
-
-Бэкенд — Go, интерфейс — TypeScript и React. Состояние — в PostgreSQL: учебное у Academy, ресурсы у Gateway.
-
-## Быстрый старт
-
-Из корня репозитория платформы, на Linux-хосте с аппаратной виртуализацией:
-
-```bash
-./prepare-kvm.sh               # libvirt, QEMU, проверка /dev/kvm, базовый образ
-./bootstrap.sh                 # PostgreSQL, сборка сервисов, запуск стека
-xdg-open http://127.0.0.1:3000
-```
-
-Вход преподавателя — `teacher / teacher`, свой пароль задаётся так: `TEACHER_PASS=… ./bootstrap.sh`. Студенты входят по коду приглашения из кабинета преподавателя.
-
-Без `/dev/kvm` стек поднимется на симуляторе гипервизора: учебная часть работает целиком, машины не создаются. Если порт 3000 занят — `FRONTEND_PORT=3005 ./bootstrap.sh`. Подробности — в `docs/INSTALL.md`.
-
 ---
 
 <p align="center">
@@ -124,6 +95,8 @@ xdg-open http://127.0.0.1:3000
     <a href="https://t.me/nexus_range">Telegram</a> ·
     <a href="https://github.com/orgs/NEXUS-RANGE/projects/1">Доска задач</a>
   </sub>
+  <br>
+  <sub><b>Made in Dagestan</b></sub>
   <br>
   <sub>NEXUS // Range — для обучения и отработки защиты. Атаки выполняются только внутри изолированного стенда.</sub>
 </p>
